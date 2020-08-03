@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  moodle:
+    build: .
+    container_name: moodle
+    ports:
+      - "80:80"
+    restart: always
+    tty: true
