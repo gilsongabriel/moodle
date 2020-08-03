@@ -12,16 +12,15 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget gnupg2 ca
     && apt-get update -y && apt-get upgrade -y && apt-get install -y nginx \
     && mkdir /usr/share/nginx/errors \
     && mkdir /moodle && mkdir /var/www/moodledata \
-    && chown -R www-data:www-data /var/www/moodledata
-
-COPY ./errors/* /usr/share/nginx/errors/
-COPY ./default.conf /etc/nginx/conf.d/
-
-RUN cd /moodle && wget https://github.com/moodle/moodle/archive/v3.9.1.tar.gz \
+    && chown -R www-data:www-data /var/www/moodledata \
+    && cd /moodle && wget https://github.com/moodle/moodle/archive/v3.9.1.tar.gz \
     && tar -xvzf v3.9.1.tar.gz && cp -rf moodle-3.9.1/* /var/www/html/ \
     && rm -rf /moodle \
     && apt-get remove -y lsb-release wget gnupg2 \
     && apt-get autoremove -y
+
+COPY ./errors/* /usr/share/nginx/errors/
+COPY ./default.conf /etc/nginx/conf.d/
 
 EXPOSE 9000
 EXPOSE 80
