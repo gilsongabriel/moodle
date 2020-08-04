@@ -4,7 +4,9 @@ MAINTAINER "Gilson Gabriel <gilson@codemastersolucoes.com>"
 COPY ./docker-php-entrypoint /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-php-entrypoint
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget gnupg2 ca-certificates lsb-release \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget gnupg2 ca-certificates lsb-release libzip-dev \
+#    && docker-php-ext-install zip \
+#    && docker-php-ext-enable zip \
     && echo "deb http://nginx.org/packages/debian `lsb_release -cs` nginx" \
         | tee /etc/apt/sources.list.d/nginx.list \
     && curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add - \

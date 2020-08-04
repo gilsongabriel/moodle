@@ -3,6 +3,8 @@ services:
   moodle:
     build: .
     container_name: moodle
+    volumes:
+      - ./.docker/moodle/data:/var/www/moodledata
     ports:
       - "80:80"
     restart: always

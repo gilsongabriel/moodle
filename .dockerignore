@@ -7,6 +7,7 @@
 .git
 .gitignore
 .idea
+.docker
 
 cmake-build-*/
 
