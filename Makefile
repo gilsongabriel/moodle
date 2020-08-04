@@ -9,3 +9,6 @@ ps:
 
 img:
 	docker images -la
+
+rmv:
+	docker volume rm moodledata
